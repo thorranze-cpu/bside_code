@@ -1,0 +1,268 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700;9..40,900&family=Space+Grotesk:wght@400;500&family=Instrument+Serif&family=Space+Mono:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--k:#0c0c0a;--p:#f4f0e8;--w:#e8e2d4;--m:#9a9589;--f:#2e2d29;--u:#c8a96e;}
+body{background:var(--k);color:var(--p);}
+
+/* NAV */
+nav{background:var(--k);border-bottom:1px solid var(--f);display:flex;align-items:stretch;height:50px;}
+.logo-wrap{padding:0 20px;border-right:1px solid var(--f);display:flex;align-items:center;}
+.logo-wrap svg{height:18px;width:auto;}
+.ntag{flex:1;display:flex;align-items:center;padding:0 20px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--m);}
+.nl{display:flex;}
+.nb{background:none;border:none;border-left:1px solid var(--f);color:var(--m);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:0 16px;cursor:pointer;}
+.nb.on{color:var(--p);background:#151511;}
+
+/* TICKER */
+.ticker{border-bottom:1px solid var(--f);padding:7px 0;overflow:hidden;}
+.tinner{display:flex;animation:scroll 30s linear infinite;white-space:nowrap;}
+.titem{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--m);padding:0 24px;border-right:1px solid var(--f);flex-shrink:0;}
+@keyframes scroll{to{transform:translateX(-50%);}}
+
+/* SLIDER — 80vh */
+.slider{height:80vh;position:relative;overflow:hidden;border-bottom:1px solid var(--f);display:grid;grid-template-columns:1fr 1fr;}
+.slide-img{border-right:1px solid var(--f);height:100%;position:relative;display:flex;align-items:flex-end;overflow:hidden;}
+.slide-img .bg{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.8) 100%);}
+.slide-img .pat{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,#2a2925 0,#2a2925 1px,transparent 0,transparent 50%);background-size:8px 8px;}
+.slide-issue{position:absolute;top:16px;left:16px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;border:1px solid rgba(244,240,232,.25);color:var(--p);padding:4px 10px;z-index:2;}
+.slide-label{position:relative;z-index:2;padding:2rem;}
+.slide-name{font-family:'DM Sans',sans-serif;font-weight:900;font-size:clamp(36px,4.5vw,64px);line-height:1;text-transform:uppercase;letter-spacing:-.05em;color:var(--p);margin-bottom:6px;}
+.slide-role{font-family:'Instrument Serif',serif;font-size:17px;color:rgba(244,240,232,.65);}
+.slide-body{padding:3rem;display:flex;flex-direction:column;justify-content:space-between;}
+.slide-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--m);color:var(--m);padding:4px 10px;margin-bottom:1.5rem;display:inline-block;}
+.slide-quote{font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,28px);color:var(--p);line-height:1.45;flex:1;display:flex;align-items:center;margin-bottom:2rem;}
+.slide-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--f);padding-top:1.2rem;}
+.slide-topic{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--m);}
+.slide-read{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--p);background:none;border:1px solid var(--f);padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:10px;}
+.slide-read::after{content:'';display:inline-block;width:14px;height:1px;background:var(--p);}
+.slide-arrows{position:absolute;bottom:0;right:0;display:flex;border-top:1px solid var(--f);border-left:1px solid var(--f);}
+.arr{background:none;border:none;border-left:1px solid var(--f);color:var(--m);font-size:13px;padding:12px 20px;cursor:pointer;}
+.arr:first-child{border-left:none;}
+
+/* HOW IT WORKS */
+.how{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--f);}
+.hcell{padding:1.1rem 1.4rem;border-right:1px solid var(--f);}
+.hcell:last-child{border-right:none;}
+.hnum{font-family:'DM Sans',sans-serif;font-weight:900;font-size:26px;color:var(--f);margin-bottom:4px;letter-spacing:-.03em;}
+.htit{font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;letter-spacing:-.01em;color:var(--p);margin-bottom:4px;}
+.hbd{font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--m);line-height:1.5;}
+.hbd b{color:var(--u);font-family:'Space Mono',monospace;font-size:11px;font-weight:400;}
+
+/* FILTERS */
+.tabs{padding:10px 1.5rem;border-bottom:1px solid var(--f);display:flex;align-items:center;gap:0;}
+.tlbl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--m);margin-right:14px;}
+.tb{background:none;border:1px solid var(--f);border-right:none;color:var(--m);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;cursor:pointer;}
+.tb:last-child{border-right:1px solid var(--f);}
+.tb.on{background:var(--p);color:var(--k);border-color:var(--p);}
+
+/* GRID HEADER */
+.grid-header{padding:1rem 1.5rem;border-bottom:1px solid var(--f);display:flex;align-items:baseline;justify-content:space-between;}
+.grid-label{font-family:'DM Sans',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.03em;text-transform:uppercase;color:var(--p);}
+.grid-count{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--m);}
+
+/* MASONRY */
+.masonry{padding:1.5rem;columns:4;column-gap:12px;}
+.card{break-inside:avoid;margin-bottom:12px;border:1px solid var(--f);background:#0e0e0c;cursor:pointer;}
+.cthumb{width:100%;position:relative;}
+.cpat{position:absolute;inset:0;}
+.cfeat{position:absolute;top:8px;right:8px;background:var(--p);color:var(--k);font-family:'Space Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;}
+.cbar{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--f);}
+.cfill{height:100%;background:var(--u);}
+.cday{position:absolute;bottom:8px;right:8px;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;}
+.cu{color:var(--u);}.cok{color:#5a5952;}
+.cfoot{padding:9px 11px;border-top:1px solid var(--f);display:flex;align-items:center;justify-content:space-between;}
+.ctit{font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;letter-spacing:-.02em;color:var(--p);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px;}
+.csub{font-family:'Space Grotesk',sans-serif;font-size:11px;color:var(--m);}
+.vb{background:none;border:1px solid var(--f);color:var(--m);font-family:'Space Mono',monospace;font-size:8px;padding:3px 8px;cursor:pointer;flex-shrink:0;}
+
+.pd{background-image:radial-gradient(circle,#2a2925 1px,transparent 1px);background-size:10px 10px;}
+.pl{background-image:repeating-linear-gradient(45deg,#2a2925 0,#2a2925 1px,transparent 0,transparent 50%);background-size:8px 8px;}
+.pg2{background-image:linear-gradient(#2a2925 1px,transparent 1px),linear-gradient(90deg,#2a2925 1px,transparent 1px);background-size:14px 14px;}
+.pc{background-image:repeating-linear-gradient(0deg,#2a2925 0,#2a2925 1px,transparent 1px,transparent 18px),repeating-linear-gradient(90deg,#2a2925 0,#2a2925 1px,transparent 1px,transparent 18px);}
+.ph{background-image:repeating-linear-gradient(-60deg,#2a2925 0,#2a2925 1px,transparent 1px,transparent 12px);}
+
+/* SUBMIT */
+.ss{border-top:1px solid var(--f);}
+.stog{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.5rem;cursor:pointer;border-bottom:1px solid var(--f);}
+.sleft{display:flex;flex-direction:column;align-items:flex-start;gap:3px;}
+.slabel{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--m);}
+.stitle{font-family:'DM Sans',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.03em;color:var(--p);}
+.sarr{font-family:'Space Mono',monospace;font-size:14px;color:var(--m);}
+.sform{max-width:600px;padding:2rem 1.5rem 3.5rem;}
+.manif{background:#0e0e0c;border:1px solid var(--f);border-left:3px solid var(--m);padding:1.3rem;margin-bottom:1.6rem;}
+.manif p{font-family:'Space Grotesk',sans-serif;font-size:15px;color:#b8b4aa;line-height:1.5;}
+.fl{display:block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--m);margin-bottom:6px;}
+.fi{width:100%;background:#0a0a08;border:1px solid var(--f);color:var(--p);font-family:'Space Grotesk',sans-serif;font-size:15px;padding:10px 13px;outline:none;margin-bottom:1.2rem;}
+.sbtn{background:var(--p);color:var(--k);border:none;font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;letter-spacing:-.01em;padding:13px 28px;cursor:pointer;}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--f);display:grid;grid-template-columns:1fr 1fr 1fr;}
+.fcol{padding:2rem 2rem 3.5rem;}
+.fcol:not(:last-child){border-right:1px solid var(--f);}
+.fkick{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--m);margin-bottom:.8rem;display:flex;align-items:center;gap:8px;}
+.fkick::before{content:'';width:14px;height:1px;background:var(--m);}
+.ftit{font-family:'DM Sans',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.03em;text-transform:uppercase;color:var(--p);line-height:1.1;margin-bottom:.8rem;}
+.fbody{font-family:'Space Grotesk',sans-serif;font-size:14px;color:var(--m);line-height:1.5;}
+.fsn{font-family:'DM Sans',sans-serif;font-weight:900;font-size:52px;color:var(--p);line-height:1;letter-spacing:-.04em;}
+.fsl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--m);margin-top:4px;margin-bottom:4px;}
+.fsd{font-family:'Space Grotesk',sans-serif;font-size:13px;color:#5a5952;line-height:1.5;}
+.fstat{padding-bottom:1.4rem;margin-bottom:1.4rem;border-bottom:1px solid var(--f);}
+.fstat:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
+</style>
+
+<nav>
+  <div class="logo-wrap">
+    <svg viewBox="0 0 3408 1028" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 1009.51V95.2368H215.87V309.837C243.806 259.679 288.885 230.473 347.297 229.838C449.518 229.838 514.279 306.028 514.279 424.756V832.37C514.279 951.099 450.153 1027.29 347.297 1026.65C289.52 1026.65 243.806 997.447 215.87 947.289V1009.51H0ZM257.14 831.1C279.996 831.1 298.409 812.688 298.409 789.831V467.296C298.409 444.439 279.361 426.026 257.14 426.026C234.283 426.026 215.87 444.439 215.87 467.296V789.831C215.87 812.688 234.283 831.1 257.14 831.1Z" fill="white"/>
+      <path d="M544.834 746.657V591.738H877.528V746.657H544.834Z" fill="white"/>
+      <path d="M1126.12 1026.65L901.992 986.019V794.275L1100.08 839.989C1138.81 839.989 1159.13 827.291 1159.13 803.799C1159.13 778.403 1140.72 763.8 1107.7 739.038L1014.37 669.198C933.738 608.881 889.929 544.755 889.929 452.693C889.929 311.107 997.229 230.473 1158.5 230.473L1331.19 262.219V453.327L1168.66 416.503C1127.39 416.503 1105.8 428.566 1105.8 452.058C1105.8 473.645 1122.31 486.978 1151.51 509.2L1246.75 582.215C1327.38 643.801 1375 711.102 1375 808.244C1375 946.654 1274.05 1026.65 1126.12 1026.65Z" fill="white"/>
+      <path d="M1369.22 438.724V247.616H2045.4V438.724H1815.56V818.402H2045.4V1009.51H1369.22V818.402H1599.69V438.724H1369.22ZM1596.52 182.855V0H1818.74V182.855H1596.52Z" fill="white"/>
+      <path d="M2406.42 1027.29C2189.28 1027.29 2018.49 848.243 2018.49 629.198C2018.49 409.518 2189.91 229.838 2407.69 229.838C2502.29 229.838 2581.02 263.489 2638.8 325.71V95.2368H2854.67V1009.51H2638.8V930.782C2581.02 993.003 2502.29 1027.29 2406.42 1027.29ZM2436.89 831.1C2549.27 831.1 2638.8 740.943 2638.8 628.563C2638.8 516.184 2549.27 426.026 2436.89 426.026C2324.51 426.026 2234.36 516.184 2234.36 628.563C2234.36 740.943 2324.51 831.1 2436.89 831.1Z" fill="white"/>
+      <path d="M3157.29 1026.65C3008.72 1026.65 2893.17 926.972 2893.17 798.72V458.407C2893.17 332.694 3006.82 230.473 3148.4 229.838C3289.35 229.838 3407.45 334.599 3407.45 458.407V688.88H3109.04V780.307C3109.04 813.323 3129.99 831.1 3169.99 831.1L3348.4 794.91V991.733L3157.29 1026.65ZM3109.04 549.834H3191.58V467.296C3191.58 444.439 3172.53 426.026 3150.31 426.026C3127.45 426.026 3109.04 444.439 3109.04 467.296V549.834Z" fill="white"/>
+    </svg>
+  </div>
+  <div class="ntag">An archive of secret creative lives</div>
+  <div class="nl">
+    <button class="nb on">Archive</button>
+    <button class="nb">All Interviews</button>
+  </div>
+</nav>
+
+<div class="ticker">
+  <div class="tinner" id="ticker"></div>
+</div>
+
+<!-- SLIDER -->
+<div class="slider">
+  <div class="slide-img">
+    <div class="pat pl"></div>
+    <div class="bg"></div>
+    <div class="slide-issue">Issue 01</div>
+    <div class="slide-label">
+      <div class="slide-name">Neri Oxman</div>
+      <div class="slide-role">Designer &amp; Architect · MIT</div>
+    </div>
+  </div>
+  <div class="slide-body">
+    <div class="slide-tag">Design · Creative Flow</div>
+    <div class="slide-quote">The work I made at 3am for no one — that changed everything I did professionally.</div>
+    <div class="slide-foot">
+      <div class="slide-topic">On secret projects and the work that feeds the work.</div>
+      <button class="slide-read">Read interview</button>
+    </div>
+  </div>
+  <div class="slide-arrows">
+    <button class="arr">&#8592;</button>
+    <button class="arr">&#8594;</button>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how">
+  <div class="hcell"><div class="hnum">01</div><div class="htit">Share</div><div class="hbd">Submit work made for yourself. No brief.</div></div>
+  <div class="hcell"><div class="hnum">02</div><div class="htit">Community votes</div><div class="hbd">People discover and engage with your work.</div></div>
+  <div class="hcell"><div class="hnum">03</div><div class="htit">Featured</div><div class="hbd">Editors select standout work permanently.</div></div>
+  <div class="hcell"><div class="hnum">04</div><div class="htit" style="color:var(--u)">7 days</div><div class="hbd">Not featured? <b>Quietly gone.</b> Resubmit anytime.</div></div>
+</div>
+
+<!-- FILTERS -->
+<div class="tabs">
+  <span class="tlbl">Show</span>
+  <button class="tb on">All</button>
+  <button class="tb">Art</button>
+  <button class="tb">Film</button>
+  <button class="tb">Writing</button>
+  <button class="tb">Music</button>
+  <button class="tb">Featured</button>
+</div>
+
+<!-- GRID HEADER -->
+<div class="grid-header">
+  <div class="grid-label">All work</div>
+  <div class="grid-count">12 works</div>
+</div>
+
+<!-- GRID -->
+<div class="masonry" id="grid"></div>
+
+<!-- SUBMIT -->
+<div class="ss">
+  <button class="stog">
+    <div class="sleft">
+      <span class="slabel">Ready to share?</span>
+      <span class="stitle">What's in your drawer?</span>
+    </div>
+    <span class="sarr">&#8595;</span>
+  </button>
+  <div class="sform">
+    <div class="manif"><p>We want the work you made because you had to. If it came from genuine creative hunger, it belongs here.</p></div>
+    <label class="fl">Your name *</label>
+    <input class="fi" type="text" placeholder="As you'd like it credited">
+    <label class="fl">Tell us about this piece *</label>
+    <input class="fi" type="text" placeholder="Why did you make this?">
+    <button class="sbtn">Share with the community</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="fcol">
+    <div class="fkick">What is B-Side</div>
+    <div class="ftit">The work you make when nobody asked.</div>
+    <p class="fbody">B-Side is a community archive for the work people make for themselves — the project in your drawer, the film shot on weekends, the music made alone.</p>
+  </div>
+  <div class="fcol">
+    <div class="fstat">
+      <div class="fsn">3.2k</div>
+      <div class="fsl">Works in the archive</div>
+      <div class="fsd">Made for no brief. Shared for love of the work.</div>
+    </div>
+    <div class="fstat">
+      <div class="fsn">47</div>
+      <div class="fsl">Countries represented</div>
+      <div class="fsd">Bankers, designers, teachers — all with a B-Side.</div>
+    </div>
+  </div>
+  <div class="fcol" style="display:flex;flex-direction:column;justify-content:space-between;">
+    <div>
+      <div class="fkick">Archive</div>
+      <p class="fbody">All submissions visible to the community. Featured work stays permanently. Everything else refreshes every 7 days.</p>
+    </div>
+    <div style="font-family:'Space Mono',monospace;font-size:9px;color:#4a4945;letter-spacing:.08em;">&#169; B-Side Archive &nbsp;&#183;&nbsp; All rights to creators</div>
+  </div>
+</div>
+
+<script>
+const items=[
+  {t:'Colour Studies, Vol.3',a:'Amara Diallo',loc:'Lagos',h:210,p:'pd',days:6,votes:24,feat:false},
+  {t:'Interior Light',a:'Sun Li',loc:'Chengdu',h:150,p:'pl',days:2,votes:87,feat:true},
+  {t:'Letters, Unsent',a:'Roisin Murphy',loc:'Cork',h:130,p:'pg2',days:5,votes:12,feat:false},
+  {t:'Self No. 12',a:'Fatima Al-Hassan',loc:'Amman',h:260,p:'pc',days:1,votes:143,feat:true},
+  {t:'Tape Loop 004',a:'Jerome Baptiste',loc:'Martinique',h:160,p:'ph',days:4,votes:31,feat:false},
+  {t:'Flood Memory',a:'Priya Nair',loc:'Kochi',h:185,p:'pd',days:7,votes:8,feat:false},
+  {t:'The Night Shift',a:'Emmanuel Osei',loc:'Accra',h:140,p:'pl',days:3,votes:19,feat:false},
+  {t:'Ink Drawings 2019-24',a:'Mei Sasaki',loc:'Osaka',h:240,p:'pc',days:6,votes:56,feat:true},
+  {t:'Study in Silence',a:'Lucas Ferreira',loc:'Sao Paulo',h:165,p:'pg2',days:2,votes:44,feat:false},
+  {t:'Piano, 4am',a:'Nadia Khalil',loc:'Cairo',h:130,p:'ph',days:5,votes:22,feat:false},
+  {t:'Overexposed',a:'Yohannes Tekle',loc:'Addis Ababa',h:200,p:'pd',days:1,votes:91,feat:false},
+  {t:'Archive Fever',a:'Soo-Jin Park',loc:'Seoul',h:150,p:'pl',days:7,votes:6,feat:false},
+];
+
+document.getElementById('grid').innerHTML=items.map(item=>{
+  const pct=Math.round((item.days/7)*100);
+  const urg=item.days<=2;
+  return `<div class="card">
+    ${item.feat?'<div class="cfeat">Featured</div>':''}
+    <div class="cthumb ${item.p}" style="height:${item.h}px;position:relative;">
+      ${!item.feat?`<div class="cbar"><div class="cfill" style="width:${pct}%"></div></div><div class="cday ${urg?'cu':'cok'}">${item.days}d</div>`:''}
+    </div>
+    <div class="cfoot">
+      <div><div class="ctit">${item.t}</div><div class="csub">${item.a} · ${item.loc}</div></div>
+      <button class="vb">&#9650; ${item.votes}</button>
+    </div>
+  </div>`;
+}).join('');
+
+const tks=['Illustration series · weekends · Osaka','Experimental film · shot alone · Lagos','Piano at 4am · Cairo','Sketchbooks nobody sees · London','Paintings between client calls · Seoul','Poetry on commutes · Cork'];
+document.getElementById('ticker').innerHTML=[...tks,...tks].map(s=>`<span class="titem">${s}</span>`).join('');
+</script>
